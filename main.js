@@ -12,7 +12,7 @@ const channelForm = document.getElementById('channel-form');
 const channelInput = document.getElementById('channel-input');
 const videoContainer = document.getElementById('video-container');
 
-const defaultChannel = 'techguyweb';
+const defaultChannel = 'vsauce';
 
 // Form submit and change channel
 channelForm.addEventListener('submit', e => {
@@ -102,7 +102,7 @@ function getChannel(channel) {
             channel.statistics.videoCount
           )}</li>
         </ul>
-        <p>${channel.snippet.description}</p>
+        <p>${channel.snippet.description}</p> 
         <hr>
         <a class="btn grey darken-2" target="_blank" href="https://youtube.com/${
           channel.snippet.customUrl
