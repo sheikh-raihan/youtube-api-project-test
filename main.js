@@ -1,8 +1,6 @@
 // Options
-const CLIENT_ID = '682839625678-6ku7sqn1serhnatlbonu2al43cn726oa.apps.googleusercontent.com';
-const DISCOVERY_DOCS = [
-  'https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'
-];
+const CLIENT_ID = '[311012207302-h28pq4siu6dn4a3lpq1spo66ebpmt5la.apps.googleusercontent.com]';
+const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'];
 const SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
 
 const authorizeButton = document.getElementById('authorize-button');
@@ -45,31 +43,31 @@ function initClient() {
     });
 }
 
-// Update UI sign in state changes
-function updateSigninStatus(isSignedIn) {
-  if (isSignedIn) {
-    authorizeButton.style.display = 'none';
-    signoutButton.style.display = 'block';
-    content.style.display = 'block';
-    videoContainer.style.display = 'block';
-    getChannel(defaultChannel);
-  } else {
-    authorizeButton.style.display = 'block';
-    signoutButton.style.display = 'none';
-    content.style.display = 'none';
-    videoContainer.style.display = 'none';
-  }
-}
+// // Update UI sign in state changes
+// function updateSigninStatus(isSignedIn) {
+//   if (isSignedIn) {
+//     authorizeButton.style.display = 'none';
+//     signoutButton.style.display = 'block';
+//     content.style.display = 'block';
+//     videoContainer.style.display = 'block';
+//     getChannel(defaultChannel);
+//   } else {
+//     authorizeButton.style.display = 'block';
+//     signoutButton.style.display = 'none';
+//     content.style.display = 'none';
+//     videoContainer.style.display = 'none';
+//   }
+// }
 
-// Handle login
-function handleAuthClick() {
-  gapi.auth2.getAuthInstance().signIn();
-}
+// // Handle login
+// function handleAuthClick() {
+//   gapi.auth2.getAuthInstance().signIn();
+// }
 
-// Handle logout
-function handleSignoutClick() {
-  gapi.auth2.getAuthInstance().signOut();
-}
+// // Handle logout
+// function handleSignoutClick() {
+//   gapi.auth2.getAuthInstance().signOut();
+// }
 
 // Display channel data
 function showChannelData(data) {
@@ -116,41 +114,41 @@ function getChannel(channel) {
     .catch(err => alert('No Channel By That Name'));
 }
 
-// Add commas to number
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
+// // Add commas to number
+// function numberWithCommas(x) {
+//   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+// }
 
-function requestVideoPlaylist(playlistId) {
-  const requestOptions = {
-    playlistId: playlistId,
-    part: 'snippet',
-    maxResults: 10
-  };
+// function requestVideoPlaylist(playlistId) {
+//   const requestOptions = {
+//     playlistId: playlistId,
+//     part: 'snippet',
+//     maxResults: 10
+//   };
 
-  const request = gapi.client.youtube.playlistItems.list(requestOptions);
+//   const request = gapi.client.youtube.playlistItems.list(requestOptions);
 
-  request.execute(response => {
-    console.log(response);
-    const playListItems = response.result.items;
-    if (playListItems) {
-      let output = '<br><h4 class="center-align">Latest Videos</h4>';
+//   request.execute(response => {
+//     console.log(response);
+//     const playListItems = response.result.items;
+//     if (playListItems) {
+//       let output = '<br><h4 class="center-align">Latest Videos</h4>';
 
-      // Loop through videos and append output
-      playListItems.forEach(item => {
-        const videoId = item.snippet.resourceId.videoId;
+//       // Loop through videos and append output
+//       playListItems.forEach(item => {
+//         const videoId = item.snippet.resourceId.videoId;
 
-        output += `
-          <div class="col s3">
-          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        `;
-      });
+//         output += `
+//           <div class="col s3">
+//           <iframe width="100%" height="auto" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+//           </div>
+//         `;
+//       });
 
-      // Output videos
-      videoContainer.innerHTML = output;
-    } else {
-      videoContainer.innerHTML = 'No Uploaded Videos';
-    }
-  });
-}
+//       // Output videos
+//       videoContainer.innerHTML = output;
+//     } else {
+//       videoContainer.innerHTML = 'No Uploaded Videos';
+//     }
+//   });
+// }
